@@ -9,21 +9,13 @@ def makeLetterAsteriskList (letter):
         for col in range(5):
 
             # condition reference
-            J = (col == 4 or row == 4  or (row == 3 and col == 0))
-            O = ((row == 0 or row==4) and (col != 0 and col != 4)) or ((col == 0 or col==4) and (row != 0 and row != 4))
-            H = col == 0 or col == 4 or row == 2
-            N = col == 0 or col == 4 or (row == col)
+            conditions = {
+            "J" : (col == 4 or row == 4  or (row == 3 and col == 0)),
+            "O" : ((row == 0 or row==4) and (col != 0 and col != 4)) or ((col == 0 or col==4) and (row != 0 and row != 4)),
+            "H" : col == 0 or col == 4 or row == 2,
+            "N" : col == 0 or col == 4 or (row == col)}
 
-            if letter == "J":
-                condition = J
-            elif letter == "O":
-                condition = O
-            elif letter == "H":
-                condition = H
-            elif letter == "N":
-                condition = N
-
-            if condition:
+            if conditions[letter]:
                 innerList.append("*")
             else:
                 innerList.append(" ")
